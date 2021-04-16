@@ -3,7 +3,6 @@
  * Описание полей пользователя и их валидация
  */
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const linkRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\\+~#=]+\.[a-zA-Z0-9()]+([-a-zA-Z0-9()@:%_\\+.~#?&/=#]*)/;
 
@@ -63,6 +62,7 @@ const movieSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'user',
+      select: false,
     },
     movieId: {
       required: true,
@@ -82,3 +82,5 @@ const movieSchema = new mongoose.Schema(
     },
   }
 );
+
+module.exports = mongoose.model('movie', movieSchema);
