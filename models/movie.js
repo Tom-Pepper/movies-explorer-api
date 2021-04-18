@@ -80,7 +80,7 @@ const movieSchema = new mongoose.Schema(
       minlength: 1,
       maxlength: 100,
     },
-  }
+  },
 );
 
 module.exports = mongoose.model('movie', movieSchema);

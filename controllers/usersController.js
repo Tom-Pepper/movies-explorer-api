@@ -111,4 +111,4 @@ module.exports = {
   updateProfile,
   createUser,
   loginUser,
-}
+};

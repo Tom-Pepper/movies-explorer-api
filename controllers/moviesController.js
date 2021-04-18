@@ -19,13 +19,14 @@ const getMovies = (req, res, next) => {
 
 /**
  * создаёт фильм с переданными в теле
- * country, director, duration, year, description, image, trailer, nameRU, nameEN и thumbnail, movieId
+ * country, director, duration, year, description, image,
+ * trailer, nameRU, nameEN и thumbnail, movieId
  * POST /movies
  */
 const createMovie = (req, res, next) => {
   const {
     country, director, duration, year, description,
-    image, trailer, nameRU, nameEN, thumbnail, movieId
+    image, trailer, nameRU, nameEN, thumbnail, movieId,
   } = req.body;
   const owner = req.user._id;
   Movie.create({
@@ -76,4 +77,4 @@ module.exports = {
   getMovies,
   createMovie,
   deleteMovie,
-}
+};

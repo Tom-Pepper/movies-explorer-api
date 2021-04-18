@@ -5,8 +5,6 @@ const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { getProfile, updateProfile } = require('../controllers/usersController');
 
-const { default: validator } = require('validator');
-
 router.get('/users/me', getProfile);
 
 router.patch('/users/me',
