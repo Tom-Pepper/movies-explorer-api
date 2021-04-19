@@ -6,7 +6,8 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
-const { DB_ADDRESS, limiter } = require('./utils/config');
+const DB_ADDRESS = require('./utils/config');
+const limiter = require('./utils/rateLimiter');
 const { errLogger, apiLogger } = require('./middlewares/logger');
 const errorHandler = require('./errors/errorHandler');
 
