@@ -24,7 +24,7 @@ const getProfile = (req, res, next) => {
       if (!user) {
         next(new NotFoundError('Пользователь с таким id не найден!'));
       }
-      res.status(200).send(user);
+      res.send(user);
     })
     .catch((err) => next(err));
 };
@@ -44,7 +44,7 @@ const updateProfile = (req, res, next) => {
       if (!user) {
         next(new ValidationError('Переданы не корректные данные'));
       }
-      res.status(200).send({ name: user.name, email: user.email });
+      res.send({ name: user.name, email: user.email });
     })
     .catch((err) => next(err));
 };
@@ -70,7 +70,7 @@ const createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
-      res.status(200).send({ message: `Пользователь ${user.name} успешно зарегистрирован. E-mail: ${user.email}` });
+      res.send({ message: `Пользователь ${user.name} успешно зарегистрирован. E-mail: ${user.email}` });
     })
     .catch((err) => {
       if (err.code === MONGO_DUPLICATE_ERROR_CODE) {
@@ -99,7 +99,7 @@ const loginUser = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET_KEY : 'dev-secret',
         { expiresIn: '7d' },
       );
-      return res.status(200).send({ token });
+      return res.send({ token });
     })
     .catch((err) => {
       next(err);
